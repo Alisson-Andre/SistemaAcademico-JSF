@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+	<ui:composition template="facelets/facelets-main.xhtml">
+		<ui:define name="main">
+			<div
+				class="h-100 d-flex flex-column jujustify-content-center align-items-center bg-secondary text-light">
+				<h:messages />
+
+				<h:form id="form-table" class="w-50 text-dark">
+					<h:dataTable
+						styleClass="table table-striped table-bordered table-dark"
+						value="##{listagemEstudantesBean.estudantes}" var="estudante">
+
+						<h:column>
+							<f:facet name="header">ID</f:facet>
+							#{estudante.id}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							#{estudante.nome}
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Data Nascimento</f:facet>
+							<h:outputText value="#{estudante.dataNascimento}">
+								<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</h:column>
+
+						<h:column footerClass="d-flex justify-content-around">
+							<f:facet name="header">Ações</f:facet>
+							<div class="d-flex justify-content-around">
+								<h:commandButton
+									action="#{listagemEstudantesBean.excluirAluno(estudante)}"
+									value="Excluir" styleClass="btn btn-secondary" />
+									
+								<h:commandButton
+									action="#{listagemEstudantesBean.carregarAluno(estudante)}"
+									value="Alterar" styleClass="btn btn-primary" />
+							</div>
+						</h:column>
+					</h:dataTable>
+
+					<h:commandButton action="form-estudante?faces-redirect=true"
+						value="Cadastrar Novo Estudante"
+						styleClass="btn btn-block btn-primary" />
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

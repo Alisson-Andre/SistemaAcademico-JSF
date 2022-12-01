@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<queries>
+	<query id="searchStudentByName">
+		SELECT e from Estudante e 
+	</query>
+
+	<query id="searchStudentByNameAndID">
+		SELECT e from Estudante e where nome like :nome and id = :id 
+	</query>
+	
+	<query id="searchUser">
+		SELECT siac_user FROM User siac_user WHERE siac_user.nome_usuario = :nome_usuario AND siac_user.senha = :senha 
+	</query>
+</queries>

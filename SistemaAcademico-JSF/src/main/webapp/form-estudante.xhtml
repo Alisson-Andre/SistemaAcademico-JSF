@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+	<ui:composition template="facelets/facelets-main.xhtml">
+		<ui:define name="main">
+			<div id="main"
+				class="h-100 d-flex flex-column justify-content-center align-items-center bg-secondary text-light">
+
+				<h:form id="form-container"
+					styleClass="mt-3 bg-dark text-light d-flex align-items-center flex-column w-25 p-5 border border-primary">
+					<h:messages infoStyle="color: aqua" />
+					<div class="mb-3 w-100">
+						<h:outputLabel for="nome" value="Nome" styleClass="form-label" />
+						<h:inputText value="#{formEstudantesBean.estudante.nome}"
+							required="true" requiredMessage="Nome é obrigatório"
+							styleClass="form-control" id="nome" placeholder="John Doe" />
+					</div>
+
+					<div class="mb-4 w-100">
+						<h:outputLabel for="dataNasc" value="Data Nascimento"
+							styleClass="form-label" />
+						<h:inputText
+							value="#{formEstudantesBean.estudante.dataNascimento}"
+							required="true" requiredMessage="Data é obrigatório"
+							styleClass="form-control" id="dataNasc">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+							<f:passThroughAttribute name="placeholder" value="01/01/1970" />
+						</h:inputText>
+					</div>
+
+					<div class="mb-4 w-100 d-flex justify-content-end">
+						<h:commandButton
+							action="#{formEstudantesBean.cadastrarOuAlterarAluno}"
+							styleClass="btn btn-primary" value="Salvar" />
+						<button type="button" class="mx-2 btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+					</div>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

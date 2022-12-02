@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<f:metadata>
+	<f:viewAction action="#{relatorioEstudantesBean.realizarRelatorio}" />
+</f:metadata>
+
+<body>
+	<ui:composition template="facelets/facelets-main.xhtml">
+		<ui:define name="main">
+			<h:messages />
+			<div
+				class="h-100 d-flex flex-column justify-content-center align-items-center bg-secondary text-light">
+				<h:dataTable
+					styleClass="table table-striped table-bordered table-dark"
+					value="#{relatorioEstudantesBean.estudantes}" var="estudante">
+
+					<h:column>
+						<f:facet name="header">Nome</f:facet>
+						<h:outputLabel value="#{estudante.nome}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Data Nascimento</f:facet>
+						<h:outputText value="#{estudante.dataNascimento}">
+							<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+						</h:outputText>
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nota 1</f:facet>
+						<h:outputLabel value="#{estudante.nota1}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nota 2</f:facet>
+						<h:outputLabel value="#{estudante.nota2}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nota 3</f:facet>
+						<h:outputLabel value="#{estudante.nota3}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nota 4</f:facet>
+						<h:outputLabel value="#{estudante.nota4}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Nota final</f:facet>
+						<h:outputLabel value="#{estudante.notaFinal}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Média</f:facet>
+						<h:outputLabel value="#{estudante.media}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Faltas</f:facet>
+						<h:outputLabel value="#{estudante.faltas}" />
+					</h:column>
+
+					<h:column>
+						<f:facet name="header">Situação</f:facet>
+						<h:outputLabel value="#{estudante.situacao.descricao}" />
+					</h:column>
+
+				</h:dataTable>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

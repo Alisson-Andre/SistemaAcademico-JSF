@@ -24,14 +24,14 @@ public class FormNotasBean implements Serializable {
 
 	public String atualizarBoletim(Estudante estudante) {
 		estudanteService.alterar(estudante);
-		addSuccessMessage("sucessoAtualizarBoletin");
+//		addSuccessMessage("sucessoAtualizarBoletin");
 
 		return "notas?faces-redirect=true";
 	}
 
 	public Boolean travaCampoFinal(Estudante estudante) {
 		if (estudante.getNota1() != null && estudante.getNota2() != null && estudante.getNota3() != null
-				&& estudante.getNota1() != null) {
+				&& estudante.getNota4() != null) {
 			if (estudante.getFaltas() != null) {
 				if (estudante.getFaltas() > 25) {
 					return true;

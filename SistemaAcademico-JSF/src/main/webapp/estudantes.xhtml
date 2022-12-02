@@ -13,16 +13,16 @@
 				<h:form id="form-table" class="w-50 text-dark">
 					<h:dataTable
 						styleClass="table table-striped table-bordered table-dark"
-						value="##{listagemEstudantesBean.estudantes}" var="estudante">
+						value="#{listagemEstudantesBean.estudantes}" var="estudante">
 
 						<h:column>
 							<f:facet name="header">ID</f:facet>
-							#{estudante.id}
+							<h:outputLabel value="#{estudante.id}" />
 						</h:column>
 
 						<h:column>
 							<f:facet name="header">Nome</f:facet>
-							#{estudante.nome}
+							<h:outputLabel value="#{estudante.nome}" />
 						</h:column>
 
 						<h:column>

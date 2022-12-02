@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+	<ui:composition template="facelets/facelets-main.xhtml">
+		<ui:define name="main">
+			<h:messages />
+			<div
+				class="h-100 d-flex flex-column justify-content-center align-items-center bg-secondary text-light">
+				<h:form id="form-table" class="text-dark">
+					<h:dataTable
+						styleClass="table table-striped table-bordered table-dark"
+						value="#{listagemEstudantesBean.estudantes}" var="estudante">
+
+						<h:column>
+							<f:facet name="header">ID</f:facet>
+							<h:outputLabel value="#{estudante.id}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nome</f:facet>
+							<h:outputLabel value="#{estudante.nome}" />
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Data Nascimento</f:facet>
+							<h:outputText value="#{estudante.dataNascimento}" >
+								<f:convertDateTime locale="pt_BR" pattern="dd/MM/yyyy" />
+							</h:outputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nota 1</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.nota1}"
+								converterMessage="Campo nota 1 inválido">
+							</h:inputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nota 2</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.nota2}"
+								converterMessage="Campo nota 2 inválido">
+							</h:inputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nota 3</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.nota3}"
+								converterMessage="Campo nota 3 inválido">
+							</h:inputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nota 4</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.nota4}"
+								converterMessage="Campo nota 4 inválido">
+							</h:inputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Faltas</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.faltas}"
+								converterMessage="Campo falta inválido">
+							</h:inputText>
+						</h:column>
+
+						<h:column>
+							<f:facet name="header">Nota final</f:facet>
+							<h:inputText style="width: 5em;" value="#{estudante.notaFinal}"
+								converterMessage="Campo nota final inválido!"
+								disabled="#{formNotasBean.travaCampoFinal(estudante)}">
+							</h:inputText>
+						</h:column>
+						
+						<h:column>
+							<f:facet name="header">Ações</f:facet>
+							<h:commandButton
+								action="#{formNotasBean.atualizarBoletim(estudante)}"
+								styleClass="btn btn-primary" value="Salvar" />
+						</h:column>
+					</h:dataTable>
+				</h:form>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

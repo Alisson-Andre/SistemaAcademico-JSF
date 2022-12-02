@@ -48,7 +48,7 @@ public class FormEstudantesBean implements Serializable {
 
 			} else {
 				estudanteService.alterar(estudante);
-				addSuccessMessage("sucessoAtualizarEstudante");
+//				addSuccessMessage("sucessoAtualizarEstudante");
 			}
 
 		} catch (Exception e) {

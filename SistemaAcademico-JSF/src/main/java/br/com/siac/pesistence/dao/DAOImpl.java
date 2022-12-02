@@ -47,6 +47,12 @@ public class DAOImpl<T> implements DAO<T> {
 		em.flush();
 		return entity;
 	}
+	
+	@Override
+	public void remove(T entity) {
+		em.remove(em.contains(entity) ? entity : em.merge(entity));
+		em.flush();
+	}
 
 	@Override
 	public List<T> listAll() {
@@ -106,12 +112,6 @@ public class DAOImpl<T> implements DAO<T> {
 			i++;
 		}
 		return query.getResultList();
-	}
-
-	@Override
-	public void remove(T entity) {
-		em.remove(em.contains(entity) ? entity : em.merge(entity));
-		em.flush();
 	}
 
 	@Override

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+<body>
+	<ui:composition template="facelets/facelets-page.xhtml">
+		<ui:define name="page">
+			<div class="container-fluid h-100 bg-dark">
+				<div class="row h-100">
+					<section
+						class="col-7 d-flex justify-content-center align-items-center">
+						<h1 class="mb-3 text-light">Sistema Acadêmico</h1>
+					</section>
+
+					<section class="col-5">
+						<div
+							class="w-100 h-100 d-flex justify-content-center align-items-center">
+							<h:form id="form-container"
+								class="bg-light d-flex align-items-center flex-column w-70 p-5 border border-primary">
+								<h2 class="mb-4">Login</h2>
+
+								<div class="mb-3 w-100">
+									<h:outputLabel value="Usuario" for="email" class="form-label" />
+									<h:inputText value="#{userSessionBean.admin.nomeUsuario}"
+										class="form-control" id="email"
+										placeholder="email@example.com" />
+								</div>
+
+								<div class="mb-4 w-100">
+									<h:outputLabel for="password" value="Senha" class="form-label" />
+									<h:inputSecret value="#{userSessionBean.admin.senha}"
+										class="form-control" id="password" required="true" />
+								</div>
+
+								<h:commandButton action="#{userSessionBean.efetuarLogin}"
+									styleClass="btn btn-block btn-primary submit-button"
+									value="Entrar" />
+							</h:form>
+						</div>
+					</section>
+				</div>
+			</div>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>
